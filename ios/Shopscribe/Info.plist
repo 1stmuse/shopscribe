@@ -32,6 +32,40 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Axiforma-Black-Italic.otf</string>
+		<string>Axiforma-Black.otf</string>
+		<string>Axiforma-Bold-Italic.otf</string>
+		<string>Axiforma-Bold.otf</string>
+		<string>Axiforma-Book-Italic.otf</string>
+		<string>Axiforma-Book.otf</string>
+		<string>Axiforma-ExtraBold-Italic.otf</string>
+		<string>Axiforma-ExtraBold.otf</string>
+		<string>Axiforma-Heavy-Italic.otf</string>
+		<string>Axiforma-Heavy.otf</string>
+		<string>Axiforma-Italic.otf</string>
+		<string>Axiforma-Light-Italic.otf</string>
+		<string>Axiforma-Light.otf</string>
+		<string>Axiforma-Medium-Italic.otf</string>
+		<string>Axiforma-Medium.otf</string>
+		<string>Axiforma-Regular.otf</string>
+		<string>Axiforma-SemiBold-Italic.otf</string>
+		<string>Axiforma-SemiBold.otf</string>
+		<string>Axiforma-Thin-Italic.otf</string>
+		<string>Axiforma-Thin.otf</string>
+		<string>AntDesign.ttf</string>
+		<string>Entypo.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>Feather.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>MaterialCommunityIcons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Fontisto.ttf</string>
+	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
