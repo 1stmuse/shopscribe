@@ -55,7 +55,7 @@ const StartPage: React.FC = () => {
         <View>
           <AppButton
             variant="primary"
-            text="Crete Account"
+            text="Create Account"
             onPress={() => navigate('SignUp')}
           />
           <Spacer />

@@ -6,4 +6,6 @@ export default {
   shoe1: require('../assets/img/shoe1.png'),
   mkt1: require('../assets/img/mkt1.png'),
   store1: require('../assets/img/store1.png'),
+  successIcon: require('../assets/img/successIcon.png'),
+  errorIcon: require('../assets/img/errorIcon.png'),
 };

@@ -11,10 +11,24 @@ import {nav} from 'src/types/index';
 import useAppColor from '@hooks/useAppColor';
 import Header from '@components/header';
 import sharedImages from '@utility/sharedImages';
+import {useModal} from '@hooks/useModal';
 
 const SignIn: React.FC = () => {
   const appColor = useAppColor();
   const {navigate, goBack} = useNavigation<nav<AuthScreenList>>();
+
+  const {show, close} = useModal();
+
+  const signIn = () => {
+    show({
+      title: 'Password Reset Success',
+      description:
+        'Your password reset was successful, please proceed to login',
+      type: 'error',
+      action: () => close(),
+      btnLabel: 'Procced to login',
+    });
+  };
 
   return (
     <BaseView>
@@ -38,7 +52,7 @@ const SignIn: React.FC = () => {
               </Pressable>
             </FlexedView>
             <Spacer height={50} />
-            <AppButton text="Login" variant="primary" />
+            <AppButton text="Login" variant="primary" onPress={signIn} />
             <Spacer height={50} />
             <Paragraph fontSize={20} textAlign="center">
               Or
