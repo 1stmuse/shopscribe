@@ -20,6 +20,24 @@ export const ViewContainer = ({children, style}: ViewProps) => {
   );
 };
 
+export const Divider = ({
+  height,
+  bg = 'rgba(246, 246, 246, 1)',
+}: {
+  height: number;
+  bg?: string;
+}) => {
+  return (
+    <View
+      style={{
+        height: height ? height : 2,
+        width: '100%',
+        backgroundColor: bg,
+      }}
+    />
+  );
+};
+
 export const Spacer = ({height}: {height?: number}) => {
   return <View style={{height: heightPixel(height ?? 20)}} />;
 };

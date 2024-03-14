@@ -53,7 +53,7 @@ const RootNavigator: React.FC = () => {
       initialRouteName="DashboardNavigator">
       {/* when checking if user has signed in  render splash screen*/}
 
-      {user && (
+      {!user && (
         <Screen
           name="DashboardNavigator"
           component={DashboardNavigator}
@@ -74,7 +74,7 @@ const RootNavigator: React.FC = () => {
         />
       )} */}
 
-      {!user && (
+      {user && (
         <Screen
           name="AuthNavigator"
           component={AuthNavigator}

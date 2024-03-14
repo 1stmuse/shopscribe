@@ -47,7 +47,7 @@ const SignIn: React.FC = () => {
             <AppTextInput placeholder="Enter phone number" />
             <AppTextInput placeholder="Enter Password" />
             <FlexedView justifyContent="flex-end">
-              <Pressable onPress={() => navigate('SignUp')}>
+              <Pressable onPress={() => navigate('ForgotPassword')}>
                 <Paragraph>Forgot password?</Paragraph>
               </Pressable>
             </FlexedView>
