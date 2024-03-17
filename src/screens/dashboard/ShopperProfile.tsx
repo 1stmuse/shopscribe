@@ -73,9 +73,18 @@ const ShopperProfile = () => {
         </View>
         <Spacer height={70} />
         <ViewContainer>
-          <FlexedView>
+          <FlexedView justifyContent="space-between">
             <FlexedView>
               <Paragraph fontSize={18}>{profile.name}</Paragraph>
+            </FlexedView>
+            <FlexedView>
+              <Entypo
+                name="star"
+                style={{marginLeft: 5}}
+                color={appColor.yellow}
+                size={20}
+              />
+              <Paragraph>{2.5}</Paragraph>
             </FlexedView>
           </FlexedView>
           <Spacer height={5} />
