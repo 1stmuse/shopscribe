@@ -1,17 +1,11 @@
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  useWindowDimensions,
-} from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {FlexedView, Spacer, ViewContainer} from '@components/view';
 import {Paragraph} from '@components/text/text';
 import useAppColor from '@hooks/useAppColor';
-import sharedImages from '@utility/sharedImages';
 import {widthPixel} from '@utility/pxToDpConvert';
+import ShopperCard from './ShopperCard';
 
 interface IProps {
   label: string;
@@ -19,7 +13,6 @@ interface IProps {
 
 const ShopperSlider = ({label}: IProps) => {
   const colors = useAppColor();
-  const {width} = useWindowDimensions();
   return (
     <View style={styles.container}>
       <ViewContainer>
@@ -36,25 +29,26 @@ const ShopperSlider = ({label}: IProps) => {
         horizontal
         showsHorizontalScrollIndicator={false}>
         {shoppers.map((item, ind) => (
-          <ViewContainer
-            style={[
-              styles.card,
-              {
-                width: width * 0.4,
-              },
-            ]}
-            key={ind}>
-            <Image source={sharedImages.pp} style={styles.img} />
-            <FlexedView>
-              <Paragraph>{item.name}</Paragraph>
-            </FlexedView>
-            <Paragraph
-              style={{marginVertical: 5}}
-              color={colors['black-shade']}>
-              {item.location}
-            </Paragraph>
-            <Paragraph color={colors['black-shade']}>{item.category}</Paragraph>
-          </ViewContainer>
+          <ShopperCard item={item} type="block" key={ind} />
+          // <ViewContainer
+          //   style={[
+          //     styles.card,
+          //     {
+          //       width: width * 0.4,
+          //     },
+          //   ]}
+          //   key={ind}>
+          //   <Image source={sharedImages.pp} style={styles.img} />
+          //   <FlexedView>
+          //     <Paragraph>{item.name}</Paragraph>
+          //   </FlexedView>
+          //   <Paragraph
+          //     style={{marginVertical: 5}}
+          //     color={colors['black-shade']}>
+          //     {item.location}
+          //   </Paragraph>
+          //   <Paragraph color={colors['black-shade']}>{item.category}</Paragraph>
+          // </ViewContainer>
         ))}
       </ScrollView>
     </View>

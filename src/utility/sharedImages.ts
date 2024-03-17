@@ -17,4 +17,8 @@ export default {
   utensil: require('../assets/img/utensil.png'),
   assesory: require('../assets/img/assesory.png'),
   pp: require('../assets/img/pp.png'),
+
+  icons: {
+    location: require('../assets/icons/location.png'),
+  },
 };

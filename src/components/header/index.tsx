@@ -1,7 +1,7 @@
 import {Paragraph} from '@components/text/text';
 import {FlexedView} from '@components/view';
 import {widthPixel} from '@utility/pxToDpConvert';
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {Pressable, StyleSheet, View} from 'react-native';
 import Back from '@assets/svgs/back.svg';
 import {useNavigation} from '@react-navigation/native';
@@ -13,9 +13,10 @@ interface Props {
   title?: string;
   backAction?: () => void;
   isAuth?: boolean;
+  rightIcon?: ReactNode;
 }
 
-const Header = ({title, backAction, isAuth = false}: Props) => {
+const Header = ({title, backAction, isAuth = false, rightIcon}: Props) => {
   const {goBack} = useNavigation<nav<HomeScreenParam>>();
   return (
     <View style={[styles.container]}>
@@ -32,14 +33,14 @@ const Header = ({title, backAction, isAuth = false}: Props) => {
                 <Back height={15} width={15} />
               </View>
             )}
-
-            {title ? (
-              <Paragraph fontSize={16} lineHeight={21} fontWeight="500">
-                {title}
-              </Paragraph>
-            ) : null}
           </FlexedView>
         </Pressable>
+        {title ? (
+          <Paragraph fontSize={16} lineHeight={21} fontWeight="500">
+            {title}
+          </Paragraph>
+        ) : null}
+        {rightIcon ? rightIcon : <View />}
       </FlexedView>
     </View>
   );
