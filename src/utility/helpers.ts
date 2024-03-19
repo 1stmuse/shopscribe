@@ -1,3 +1,10 @@
+import {
+  launchCamera,
+  launchImageLibrary,
+  ImageLibraryOptions,
+  ImagePickerResponse,
+} from 'react-native-image-picker';
+
 export const isUpperCase = (string: string) => /[A-Z]/.test(string);
 export const isLowerCase = (string: string) => /[a-z]/.test(string);
 
@@ -34,4 +41,32 @@ export const getInitials = (text: string): string => {
     return `${splitWords[0][0].toUpperCase()}${splitWords[1][0].toUpperCase()}`;
   }
   return `${text.slice(0, 2).toUpperCase()}`;
+};
+
+type LaunchType = 'camera' | 'upload';
+
+export const pickImage = async (
+  type: LaunchType,
+  onPick: (error?: any, imgUrl?: string) => void,
+) => {
+  let imgOptions: ImageLibraryOptions = {
+    mediaType: 'photo',
+    quality: 1,
+    selectionLimit: 1,
+    presentationStyle: 'popover',
+  };
+
+  let response: ImagePickerResponse;
+
+  try {
+    if (type === 'camera') {
+      response = await launchCamera(imgOptions);
+    } else {
+      response = await launchImageLibrary(imgOptions);
+    }
+
+    onPick(null, response.assets?.[0].uri as string);
+  } catch (error) {
+    onPick('Error Picking Image', undefined);
+  }
 };

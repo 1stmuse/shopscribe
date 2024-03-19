@@ -15,7 +15,6 @@ import {widthPixel} from '@utility/pxToDpConvert';
 import {useNavigation} from '@react-navigation/native';
 import {nav} from '../../../types';
 import {HomeScreenParam} from '@navigation/dashboard/screens';
-import {Rating} from 'react-native-elements';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 interface IProps {

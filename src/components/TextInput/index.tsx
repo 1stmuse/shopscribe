@@ -18,6 +18,7 @@ interface IProps extends TextInputProps {
   leftIcon?: ReactElement;
   containerStyle?: ViewStyle;
   inputStyle?: ViewStyle;
+  multiline?: boolean;
 }
 
 export const AppTextInput = ({
@@ -26,6 +27,7 @@ export const AppTextInput = ({
   leftIcon,
   containerStyle,
   inputStyle,
+  multiline = false,
   ...props
 }: IProps) => {
   const [height, setHeight] = useState(0);
@@ -33,19 +35,21 @@ export const AppTextInput = ({
     <View style={[styles.body, {...containerStyle}]}>
       {label && (
         <View>
-          <Text>
-            <label htmlFor="" />
-          </Text>
+          <Text>{label}</Text>
         </View>
       )}
       <View
         style={[
           styles.inputContaner,
           {...inputStyle},
-          {height: Math.max(60, height)},
+          {
+            height: Math.max(multiline ? 100 : 60, height),
+            marginTop: multiline ? 10 : 0,
+          },
         ]}>
         {leftIcon && leftIcon}
         <TextInput
+          multiline={multiline}
           onContentSizeChange={event => {
             setHeight(event.nativeEvent.contentSize.height);
           }}
@@ -74,7 +78,6 @@ const styles = StyleSheet.create({
       ios: heightPixel(10),
       android: 0,
     }),
-    height: heightPixel(60),
   },
   input: {
     paddingHorizontal: widthPixel(15),
