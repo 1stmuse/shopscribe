@@ -12,7 +12,7 @@ import {
 import {heightPixel, widthPixel} from '@utility/pxToDpConvert';
 import colors from '@utility/colors';
 
-type Variant = 'primary' | 'secondary';
+type Variant = 'primary' | 'secondary' | 'outline';
 
 interface ButtonProps {
   onPress?: () => void;
@@ -32,6 +32,11 @@ const buttonStyle: Record<Variant, StyleProp<ViewStyle>> = {
   },
   secondary: {
     backgroundColor: colors.border,
+  },
+  outline: {
+    borderWidth: 1,
+    borderColor: colors.primary,
+    backgroundColor: 'transparent',
   },
 };
 
@@ -57,13 +62,21 @@ export const AppButton: React.FC<ButtonProps> = ({
           borderRadius: widthPixel(8),
           alignItems: 'center',
           justifyContent: 'center',
+          opacity: disabled ? 0.3 : 1,
         },
         style,
       ]}>
       {!isLoading ? (
         <Text
           style={[
-            {color: variant === 'primary' ? '#fff' : colors.black},
+            {
+              color:
+                variant === 'primary'
+                  ? '#fff'
+                  : variant == 'outline'
+                  ? colors.primary
+                  : colors.black,
+            },
             textStyle,
           ]}>
           {text}

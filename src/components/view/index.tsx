@@ -73,7 +73,7 @@ export const BaseView = ({
   return (
     <View style={{flex: 1, backgroundColor: background}}>
       <KeyboardAvoidingView
-        style={{flex: 1, paddingTop: Platform.OS === 'ios' ? 80 : 100}}
+        style={{flex: 1, paddingTop: Platform.OS === 'ios' ? 70 : 100}}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         {children}
       </KeyboardAvoidingView>

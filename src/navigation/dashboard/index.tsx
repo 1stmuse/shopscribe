@@ -11,6 +11,8 @@ import {BaseView} from '@components/view';
 import Location from '@screens/dashboard/Location';
 import ShopperProfile from '@screens/dashboard/ShopperProfile';
 import CreateRequest from '@screens/dashboard/orders/createRequest';
+import RequestSummary from '@screens/dashboard/orders/RequestSummary';
+import ShopperList from '@screens/dashboard/ShopperList';
 
 const {Screen: StackScreen, Navigator: StackNav} =
   createStackNavigator<HomeScreenParam>();
@@ -22,11 +24,13 @@ const DashboardNavigator = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="Dashboard">
-        <StackScreen component={Tabs} name="Dashboard" />
+        initialRouteName="Tab">
+        <StackScreen component={Tabs} name="Tab" />
         <StackScreen name="Location" component={Location} />
         <StackScreen name="ShopperProfile" component={ShopperProfile} />
         <StackScreen name="CreateRequest" component={CreateRequest} />
+        <StackScreen name="RequestSummary" component={RequestSummary} />
+        <StackScreen name="ShoppersList" component={ShopperList} />
       </StackNav>
     </BaseView>
   );

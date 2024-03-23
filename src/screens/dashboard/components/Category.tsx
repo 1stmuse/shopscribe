@@ -9,9 +9,13 @@ import {
 import React from 'react';
 import sharedImages from '@utility/sharedImages';
 import {Paragraph} from '@components/text/text';
+import {useNavigation} from '@react-navigation/native';
+import {nav} from '../../../types';
+import {HomeScreenParam} from '@navigation/dashboard/screens';
 
 const Category = () => {
   const {width} = useWindowDimensions();
+  const {navigate} = useNavigation<nav<HomeScreenParam>>();
   return (
     <View style={styles.container}>
       <FlatList
@@ -19,6 +23,7 @@ const Category = () => {
         scrollEnabled={false}
         renderItem={({item}) => (
           <Pressable
+            onPress={() => navigate('ShoppersList', {category: item.label})}
             style={[
               styles.card,
               {

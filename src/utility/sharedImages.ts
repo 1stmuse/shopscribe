@@ -20,5 +20,12 @@ export default {
 
   icons: {
     location: require('../assets/icons/location.png'),
+    editUser: require('../assets/icons/editUser.png'),
+    wallet: require('../assets/icons/wallet.png'),
+    scan: require('../assets/icons/scan.png'),
+    people: require('../assets/icons/people.png'),
+    support: require('../assets/icons/support.png'),
+    lock: require('../assets/icons/lock.png'),
+    logout: require('../assets/icons/logout.png'),
   },
 };

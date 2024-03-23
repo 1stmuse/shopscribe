@@ -15,11 +15,17 @@ import DropdownSelect from '@components/dropdownSelect';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {heightPixel, widthPixel} from '@utility/pxToDpConvert';
 import {AppButton} from '@components/button';
-import {OrderObject} from '@store/orders';
+import {OrderObject, addOrderItem} from '@store/orders';
 import {Image} from 'react-native-elements';
 import {pickImage} from '@utility/helpers';
+import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {HomeScreenParam} from '@navigation/dashboard/screens';
+import {nav} from '../../../types';
 
 const CreateRequest = () => {
+  const {navigate} = useNavigation<nav<HomeScreenParam>>();
+  const dispatch = useDispatch();
   const scrollRef = useRef<ScrollView>(null);
   const [itemDetail, setItemDetail] = useState<OrderObject>({
     category: '',
@@ -51,6 +57,23 @@ const CreateRequest = () => {
   };
 
   const onContentSizeChanged = () => scrollRef.current?.scrollToEnd();
+
+  const resetData = () => {
+    setItemDetail({
+      category: '',
+      description: '',
+      quantity: '',
+      color: '',
+      name: '',
+    });
+    setImages([]);
+  };
+
+  const addItem = () => {
+    dispatch(addOrderItem({...itemDetail, images}));
+    resetData();
+    navigate('RequestSummary');
+  };
 
   return (
     <ViewContainer style={styles.container}>
@@ -89,11 +112,13 @@ const CreateRequest = () => {
             placeholder="Enter Quantity"
             onChangeText={text => onInputChange('quantity', text)}
             value={itemDetail.quantity}
+            keyboardType="number-pad"
           />
           <AppTextInput
             placeholder="Enter size (optional)"
             onChangeText={text => onInputChange('size', text)}
             value={itemDetail.size}
+            keyboardType="number-pad"
           />
           <AppTextInput
             placeholder="Enter Color (optional)"
@@ -135,7 +160,12 @@ const CreateRequest = () => {
         </View>
       </ScrollView>
       <View>
-        <AppButton variant="primary" text="Add Item" onPress={() => {}} />
+        <AppButton
+          disabled={!itemDetail.name || !itemDetail.category}
+          variant="primary"
+          text="Add Item"
+          onPress={addItem}
+        />
         <Spacer height={50} />
       </View>
     </ViewContainer>

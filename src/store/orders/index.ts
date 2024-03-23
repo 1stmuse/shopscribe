@@ -1,4 +1,5 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
+import {RootState} from '..';
 
 export interface OrderObject {
   name: string;
@@ -23,24 +24,32 @@ const orderSlice = createSlice({
   initialState: initialState,
   reducers: {
     addOrderItem(state, {payload}: PayloadAction<OrderObject>) {
-      state.orders.push(payload);
-    },
-    editOrderItem(state, {payload}: PayloadAction<OrderObject>) {
       const index = state.orders.findIndex(
         order => order.name === payload.name,
       );
-      state.orders[index] = payload;
+
+      if (index < 0) {
+        state.orders.push(payload);
+      } else {
+        state.orders[index] = payload;
+      }
     },
+
     deleteOrderItem(state, {payload}: PayloadAction<OrderObject>) {
       const index = state.orders.findIndex(
         order => order.name === payload.name,
       );
       state.orders.splice(index, 1);
     },
+
+    clearOrders(state) {
+      state.orders = [];
+    },
   },
 });
 
-export const {addOrderItem, editOrderItem, deleteOrderItem} =
-  orderSlice.actions;
+export const {addOrderItem, deleteOrderItem, clearOrders} = orderSlice.actions;
+
+export const getOrdersSelector = (state: RootState) => state.orders.orders;
 
 export default orderSlice.reducer;
