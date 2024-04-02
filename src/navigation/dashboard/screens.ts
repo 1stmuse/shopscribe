@@ -12,6 +12,9 @@ export type HomeScreenParam = {
   Referals: undefined;
   HelpAndSupport: undefined;
   Security: undefined;
+  VerifyInfo: {type: 'email' | 'phone'; data: string};
+  ChangePassword: undefined;
+  ChangePin: undefined;
 };
 
 export type BottomScreenParams = {

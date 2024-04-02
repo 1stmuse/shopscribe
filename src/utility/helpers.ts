@@ -1,9 +1,72 @@
+import {SectionData} from '../types';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+dayjs.extend(relativeTime);
 import {
   launchCamera,
   launchImageLibrary,
   ImageLibraryOptions,
   ImagePickerResponse,
 } from 'react-native-image-picker';
+
+export const formatWithdrawalsHistoryData = (transa: []) => {
+  let data: SectionData[] = [];
+  let dataWithDay: Record<string, []> = {};
+  transa?.map((th: any) => {
+    const day = getDateRangeByGroup(th?.date);
+    !dataWithDay[day] ? (dataWithDay[day] = [th]) : dataWithDay[day].push(th);
+  });
+
+  if (dataWithDay) {
+    for (const day in dataWithDay) {
+      data.push({
+        title: day,
+        data: dataWithDay[day],
+      });
+    }
+  }
+
+  return data;
+};
+
+export function getDateRangeByGroup(date) {
+  var REFERENCE = dayjs();
+
+  var TODAY = dayjs(date).isSame(REFERENCE, 'day');
+
+  var YESTERDAY = REFERENCE.subtract(1, 'day')
+    .startOf('day')
+    .format('YYYY-MM-DD');
+
+  var fromNow = dayjs(date).fromNow();
+
+  if (TODAY) {
+    return 'Today';
+  } else if (YESTERDAY === date) {
+    return 'Yesterday';
+  } else if (REFERENCE.diff(dayjs(date), 'days') === 1) {
+    return '2 days ago';
+  } else if (REFERENCE.diff(dayjs(date), 'days') === 2) {
+    return '3 days ago';
+  } else if (REFERENCE.diff(dayjs(date), 'days') === 3) {
+    return '4 days ago';
+  } else if (REFERENCE.diff(dayjs(date), 'days') === 4) {
+    return '5 days ago';
+  } else if (REFERENCE.diff(dayjs(date), 'days') === 5) {
+    return '6 days ago';
+  } else if (REFERENCE.diff(dayjs(date), 'days') <= 7) {
+    return 'Last week';
+  } else if (REFERENCE.diff(dayjs(date), 'days') <= 14) {
+    return 'Two weeks ago';
+  } else if (REFERENCE.diff(dayjs(date), 'days') <= 21) {
+    return 'Three week ago';
+  } else if (REFERENCE.diff(dayjs(date), 'days') <= 28) {
+    return 'Four weeks ago';
+  } else {
+    return fromNow;
+  }
+}
 
 export const isUpperCase = (string: string) => /[A-Z]/.test(string);
 export const isLowerCase = (string: string) => /[a-z]/.test(string);

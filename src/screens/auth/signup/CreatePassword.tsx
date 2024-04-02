@@ -17,7 +17,7 @@ import {
   isUpperCase,
 } from '@utility/helpers';
 
-interface PassCondition {
+export interface PassCondition {
   title: string;
   condition: boolean;
 }
