@@ -30,4 +30,36 @@ export default {
       },
     ],
   },
+  transaction: [
+    {
+      type: 'credit',
+      desc: 'Deposit',
+      amount: 25000,
+      date: '2024-03-01',
+    },
+    {
+      type: 'debit',
+      desc: 'Order 200876',
+      amount: 3000,
+      date: '2024-06-01',
+    },
+    {
+      type: 'debit',
+      desc: 'Order 200876',
+      amount: 1000,
+      date: '2024-03-01',
+    },
+    {
+      type: 'credit',
+      desc: 'Deposit',
+      amount: 25000,
+      date: '2024-06-01',
+    },
+    {
+      type: 'debit',
+      desc: 'Order 200876',
+      amount: 1000,
+      date: '2024-10-01',
+    },
+  ],
 };

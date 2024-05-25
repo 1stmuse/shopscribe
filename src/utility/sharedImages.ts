@@ -17,6 +17,7 @@ export default {
   utensil: require('../assets/img/utensil.png'),
   assesory: require('../assets/img/assesory.png'),
   pp: require('../assets/img/pp.png'),
+  walletBg: require('../assets/img/walletBg.png'),
 
   icons: {
     location: require('../assets/icons/location.png'),
@@ -27,5 +28,11 @@ export default {
     support: require('../assets/icons/support.png'),
     lock: require('../assets/icons/lock.png'),
     logout: require('../assets/icons/logout.png'),
+    trash: require('../assets/icons/trash.png'),
+    mail: require('../assets/icons/mail.png'),
+    phone: require('../assets/icons/phone.png'),
+    camera: require('../assets/icons/camera.png'),
+    moneyIn: require('../assets/icons/moneyIn.png'),
+    moneyOut: require('../assets/icons/moneyOut.png'),
   },
 };

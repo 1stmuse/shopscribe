@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {
   Image,
@@ -15,6 +16,8 @@ import colors from '@utility/colors';
 import {HomeScreenParam} from '@navigation/dashboard/screens';
 import sharedImages from '@utility/sharedImages';
 import AppSwitch from '@components/switch';
+import {nav} from '../../../types';
+import {useNavigation} from '@react-navigation/native';
 
 const person = {
   name: 'John Krasniki',
@@ -23,6 +26,7 @@ const person = {
 
 const Profile: React.FC = ({}) => {
   const [enableBiometrics, setBioMetric] = useState(false);
+  const {navigate} = useNavigation<nav<HomeScreenParam>>();
 
   return (
     <View style={{flex: 1}}>
@@ -50,11 +54,21 @@ const Profile: React.FC = ({}) => {
           <Spacer height={30} />
           <View style={styles.optionV}>
             {options.map((op, ind) => (
-              <Pressable>
+              <Pressable
+                key={ind}
+                onPress={() => {
+                  if (op.hasRight) {
+                    setBioMetric(!enableBiometrics);
+                    return;
+                  }
+
+                  if (op.url) {
+                    navigate(op.url as keyof HomeScreenParam);
+                  }
+                }}>
                 <FlexedView
                   justifyContent="space-between"
-                  style={styles.option}
-                  key={ind}>
+                  style={styles.option}>
                   <FlexedView>
                     <Image style={styles.icon} source={op.icon} />
                     <Paragraph fontSize={16}>{op.label}</Paragraph>
