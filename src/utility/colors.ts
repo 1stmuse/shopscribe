@@ -8,9 +8,11 @@ export default {
   secondary: '#00A5C6',
   accent: 'rgba(255, 243, 246, 0.5)',
   white: '#fff',
-  border: 'rgba(246, 246, 246, 1)',
+  border: 'rgba(48, 50, 53, 0.1)',
   black: '#000000',
   yellow: '#D2D213',
   yellowLight: 'rgba(254, 254, 235, 0.5)',
   'black-shade': '#605D5A',
+  black40: 'rgba(103, 104, 105, 1)',
+  gray100: 'rgba(249, 249, 249, 1)',
 };

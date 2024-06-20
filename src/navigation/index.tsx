@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AuthNavigator from './auth';
 import {RootScreenList} from './RootStackSceenList';
@@ -9,14 +9,17 @@ import {setCredential} from '@store/auth';
 import {useAsyncStorage} from '@react-native-async-storage/async-storage';
 import {useDispatch} from 'react-redux';
 import DashboardNavigator from './dashboard';
+import Onboarding from '@screens/onboarding';
+import SplashScreen from 'react-native-splash-screen';
 
 const {Screen, Navigator} = createNativeStackNavigator<RootScreenList>();
 
 const RootNavigator: React.FC = () => {
   const {user} = useAuth();
   const {getItem} = useAsyncStorage('@user');
-  // const {getItem: getOnboard} = useAsyncStorage('onboard');
+  const {getItem: getOnboard} = useAsyncStorage('onboard');
   const dispatch = useDispatch();
+  const [didOnboard, setDidOnboard] = useState(false);
 
   // console.log(user, 'the user 00000');
 
@@ -27,12 +30,12 @@ const RootNavigator: React.FC = () => {
     dispatch(setCredential(user_da));
   };
 
-  // const getOnboardStatus = async () => {
-  //   const onboardStatus = await getOnboard();
-  //   if (onboardStatus) {
-  //     dispatch(setDidOnboard(JSON.parse(onboardStatus)));
-  //   }
-  // };
+  const getOnboardStatus = async () => {
+    const onboardStatus = await getOnboard();
+    if (onboardStatus) {
+      dispatch(setDidOnboard(JSON.parse(onboardStatus)));
+    }
+  };
 
   // useEffect(() => {
   //   if (!appLoading) {

@@ -34,5 +34,7 @@ export default {
     camera: require('../assets/icons/camera.png'),
     moneyIn: require('../assets/icons/moneyIn.png'),
     moneyOut: require('../assets/icons/moneyOut.png'),
+    request: require('../assets/icons/request.png'),
+    ongoing: require('../assets/icons/ongoing.png'),
   },
 };
